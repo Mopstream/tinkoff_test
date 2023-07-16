@@ -1,0 +1,5 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/mopstream/IdeaProjects/solution/src/main/scala/Main.scala:31:9: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following input: None[0m
+[0m[[0m[33mwarn[0m] [0m[0m        newElem match {[0m
+[0m[[0m[33mwarn[0m] [0m[0m        ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
