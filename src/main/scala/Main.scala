@@ -30,6 +30,7 @@ object Main {
         val (newElem, newBytes) = step(bytes)
         newElem match {
           case Some(elem) => arr += elem
+          case _ =>
         }
         help(newBytes)
       }
@@ -43,6 +44,7 @@ object Main {
     private def calculateTable_CRC8(): Bytes = {
       val generator: Byte = 0x1D
       val crcTable: Bytes = ArrayBuffer.fill(256)(0)
+
       for (dividend <- 0 until 256) {
         var currByte = dividend
         for (_ <- 0 until 8) {
@@ -83,7 +85,6 @@ object Main {
   }
 
   case class MyString(value: String) extends InBytesAble {
-    override def toString: String = value
 
     override def inBytes: Bytes = ArrayBuffer(value.length.toByte) ++= value.getBytes(StandardCharsets.UTF_8)
 
@@ -96,7 +97,6 @@ object Main {
   }
 
   case class VarUInt(var value: BigInt) extends InBytesAble with Ordered[VarUInt] {
-    override def toString: String = value.toString
 
     override def inBytes: Bytes = {
       val ret: Bytes = ArrayBuffer()
@@ -152,7 +152,6 @@ object Main {
   }
 
   case class Trigger(op: Byte, value: VarUInt, name: MyString) extends InBytesAble {
-    override def toString: String = s"op = $op\nvalue = $value\nname = $name\n"
 
     override def inBytes: Bytes = op +: (value.inBytes ++ name.inBytes)
   }
@@ -163,6 +162,7 @@ object Main {
         val (value, other) = VarUInt.searchFirstVar(b.tail)
         val (nameBytes, rest) = other.splitAt(other(0) + 1)
         val name = MyString(nameBytes)
+
         (Some(Trigger(b.head, value, name)), rest)
       })
   }
@@ -170,7 +170,6 @@ object Main {
   abstract class DevProps extends InBytesAble
 
   case class EnvSensorProps(sensors: Byte, triggers: ArrayBuffer[Trigger]) extends DevProps {
-    override def toString: String = s"sensors = $sensors\ntriggers ={\n${triggers.mkString("\n")}}\n"
 
     override def inBytes: Bytes = sensors +: triggers.length.toByte +: triggers.flatMap(_.inBytes)
   }
@@ -184,7 +183,6 @@ object Main {
   }
 
   class EmptyProps extends DevProps {
-    override def toString: String = ""
 
     override def inBytes: Bytes = ArrayBuffer()
   }
@@ -194,7 +192,6 @@ object Main {
   }
 
   class StringsProps(val values: ArrayBuffer[MyString]) extends DevProps {
-    override def toString: String = s"values = [${values.mkString(" ")}]\n"
 
     override def inBytes: Bytes = values.length.toByte +: values.flatMap(_.inBytes)
   }
@@ -214,7 +211,6 @@ object Main {
   abstract class CmdBody extends InBytesAble
 
   case class Device(devName: MyString, devProps: DevProps) extends CmdBody {
-    override def toString: String = s"devName = $devName\ndevProps = {\n$devProps}\n"
 
     override def inBytes: Bytes = devName.inBytes ++ devProps.inBytes
   }
@@ -224,6 +220,7 @@ object Main {
       val devType = bytes(0)
       val (nameBytes, propsBytes) = bytes.drop(2).splitAt(bytes(2) + 1)
       val name = MyString(nameBytes)
+
       val props = devType match {
         case 2 => EnvSensorProps(propsBytes)
         case 3 => StringsProps(propsBytes.tail)
@@ -238,7 +235,6 @@ object Main {
   }
 
   case class TimerCmdBody(timestamp: VarUInt) extends CmdBody {
-    override def toString: String = s"timestamp = $timestamp\n"
 
     override def inBytes: Bytes = timestamp.inBytes
   }
@@ -252,7 +248,6 @@ object Main {
   }
 
   class EnvSensorStatus(val values: ArrayBuffer[VarUInt]) extends CmdBody {
-    override def toString: String = s"values = [${values.mkString(" ")}]\n"
 
     override def inBytes: Bytes = values.flatMap(_.inBytes)
   }
@@ -268,7 +263,6 @@ object Main {
   }
 
   case class ValueBody(value: Byte) extends CmdBody {
-    override def toString: String = s"value = $value\n"
 
     override def inBytes: Bytes = ArrayBuffer(value)
   }
@@ -278,7 +272,6 @@ object Main {
   }
 
   class EmptyBody extends CmdBody {
-    override def toString: String = ""
 
     override def inBytes: Bytes = ArrayBuffer()
   }
@@ -288,7 +281,6 @@ object Main {
   }
 
   case class Payload(src: VarUInt, dst: VarUInt, serial: VarUInt, devType: Byte, cmd: Byte, cmdBody: CmdBody) extends InBytesAble {
-    override def toString: String = s"src = $src\ndst = $dst\nserial = $serial\ndevType = $devType\ncmd = $cmd\ncmdBody = {\n$cmdBody}\n"
 
     override def inBytes: Bytes =
       src.inBytes ++ dst.inBytes ++ serial.inBytes ++ ArrayBuffer(devType, cmd) ++ cmdBody.inBytes
@@ -309,9 +301,11 @@ object Main {
       val (src, rest) = VarUInt.searchFirstVar(bytes)
       val (dst, rest1) = VarUInt.searchFirstVar(rest)
       val (serial, others) = VarUInt.searchFirstVar(rest1)
+
       val devType = others(0)
       val cmd = others(1)
       val other = others.drop(2)
+
       val cmdBody: CmdBody = (cmd, devType) match {
         case (Commands.Status, Device.EnvSensor) => EnvSensorStatus(other)
         case (Commands.WhoIsHere, _) | (Commands.IAmHere, _) => Device(others)
@@ -324,7 +318,6 @@ object Main {
   }
 
   case class Packet(length: Byte, payload: Payload, crc8: Byte) extends InBytesAble {
-    override def toString: String = s"[\nlen = $length\npayload = {\n$payload}\ncrc8 = $crc8\n]\n"
 
     override def inBytes: Bytes = length +: (payload.inBytes :+ crc8)
 
@@ -336,6 +329,7 @@ object Main {
       val length = bytes.head
       val payload = Payload(bytes.tail.init)
       val crc8 = bytes.last
+
       new Packet(length, payload, crc8)
     }
 
@@ -369,17 +363,14 @@ object Main {
     val url = uri"${args(0)}"
     val broadcast = VarUInt(0x3FFF)
 
-
     val myAddress = VarUInt(BigInt(args(1), 16))
     val mySerial = VarUInt(1)
     val myName = MyString("HUB01")
     val myDevice = Device(myName, EmptyProps())
 
-
     val requestQueue: ArrayBuffer[(Byte, VarUInt, VarUInt)] = ArrayBuffer()
     val devicesMap: mutable.Map[MyString, (VarUInt, DevProps, Byte)] = mutable.Map()
     val namesMap: mutable.Map[VarUInt, MyString] = mutable.Map()
-
 
     val client = SimpleHttpClient()
     val whoIsHere = Packet(Payload(myAddress, broadcast, mySerial ++, Device.SmartHub, Commands.WhoIsHere, myDevice))
@@ -484,6 +475,7 @@ object Main {
         def manageSensor(values: ArrayBuffer[VarUInt], name: MyString): String = {
           val (_, props, _) = devicesMap(name)
           var mes = ""
+
           props match {
             case EnvSensorProps(sensors, triggers) =>
               val sensorValues: Map[Int, VarUInt] = ArrayBuffer(1, 2, 3, 4).filter(x => (sensors & 0xF & x) != 0).zip(values).toMap
@@ -509,6 +501,7 @@ object Main {
 
     def timeoutCleaner(): Unit = {
       val toRemove: ArrayBuffer[(Byte, VarUInt, VarUInt)] = ArrayBuffer()
+
       for (expected <- requestQueue) {
         if (Timer.timeFrom(expected._2) >= VarUInt(300)) {
           toRemove += expected

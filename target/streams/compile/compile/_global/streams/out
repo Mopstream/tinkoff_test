@@ -1,5 +1,7 @@
-[0m[[0m[33mwarn[0m] [0m[0m/home/mopstream/IdeaProjects/solution/src/main/scala/Main.scala:31:9: match may not be exhaustive.[0m
-[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following input: None[0m
-[0m[[0m[33mwarn[0m] [0m[0m        newElem match {[0m
-[0m[[0m[33mwarn[0m] [0m[0m        ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/mopstream/IdeaProjects/solution/src/main/scala/solution.scala:530:35: reference to Map is ambiguous;[0m
+[0m[[0m[31merror[0m] [0m[0mit is imported twice in the same scope by[0m
+[0m[[0m[31merror[0m] [0m[0mimport scala.collection.immutable.Map[0m
+[0m[[0m[31merror[0m] [0m[0mand import scala.collection.mutable.Map[0m
+[0m[[0m[31merror[0m] [0m[0m                val sensorValues: Map[Int, VarUInt] = ArrayBuffer(1, 2, 3, 4).filter(x => (sensors & 0xF & x) != 0).zip(values).toMap[0m
+[0m[[0m[31merror[0m] [0m[0m                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

@@ -1,19 +1,21 @@
-[0m[[0m[31merror[0m] [0m[0mjava.util.NoSuchElementException: key not found: 2[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.MapLike$class.default(MapLike.scala:228)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractMap.default(Map.scala:59)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.mutable.HashMap.apply(HashMap.scala:65)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$$anonfun$handle$1$1$$anonfun$apply$4.manageSwitch$1(Main.scala:493)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$$anonfun$handle$1$1$$anonfun$apply$4.statusHandler$1(Main.scala:453)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$$anonfun$handle$1$1$$anonfun$apply$4.apply(Main.scala:425)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$$anonfun$handle$1$1$$anonfun$apply$4.apply(Main.scala:415)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$$anonfun$handle$1$1.apply(Main.scala:415)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$$anonfun$handle$1$1.apply(Main.scala:414)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Option.foreach(Option.scala:257)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$.handle$1(Main.scala:414)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main$.main(Main.scala:393)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Main.main(Main.scala)[0m
+[0m[[0m[31merror[0m] [0m[0mjava.net.ConnectException: Connection refused[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.nio.ch.Net.connect0(Native Method)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.nio.ch.Net.connect(Net.java:579)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.nio.ch.Net.connect(Net.java:568)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:588)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.net.Socket.connect(Socket.java:633)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.net.Socket.connect(Socket.java:583)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:183)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:531)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:636)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:929)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:759)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1688)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1589)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:529)[0m
+[0m[[0m[31merror[0m] [0m[0m	at solution$.sendHttpPostRequest(solution.scala:23)[0m
+[0m[[0m[31merror[0m] [0m[0m	at solution$.main(solution.scala:424)[0m
+[0m[[0m[31merror[0m] [0m[0m	at solution.main(solution.scala)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)[0m
@@ -31,4 +33,4 @@
 [0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)[0m
 [0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Thread.run(Thread.java:833)[0m
-[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) java.util.NoSuchElementException: key not found: 2[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) java.net.ConnectException: Connection refused[0m

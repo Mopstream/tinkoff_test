@@ -1,6 +1,41 @@
 [0m[[0m[0mdebug[0m] [0m[0m[zinc] IncrementalCompile -----------[0m
 [0m[[0m[0mdebug[0m] [0m[0mIncrementalCompile.incrementalCompile[0m
-[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 60 products, 1 sources, 3 libraries[0m
-[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/src/main/scala/Main.scala)[0m
-[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(), unmodified = ...),Set(),Set(),API Changes: Set())[0m
-[0m[[0m[0mdebug[0m] [0m[0mNo changes[0m
+[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 60 products, 3 sources, 1 libraries[0m
+[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/src/main/scala/Solution.scala, ${BASE}/src/main/scala/solution.scala, ${BASE}/src/main/scala/Main.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(${BASE}/src/main/scala/solution.scala, ${BASE}/src/main/scala/Main.scala), unmodified = ...),Set(),Set(),API Changes: Set())[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial source changes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	removed: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	added: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	modified: Set(${BASE}/src/main/scala/solution.scala, ${BASE}/src/main/scala/Main.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated products: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mExternal API changes: API Changes: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified binary dependencies: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial directly invalidated classes: Set(solution.EnvSensorStatus, solution.Device, solution.Packet, solution.MyString, solution.Timer, solution.Payload, solution.EmptyBody, solution.CoderBase64, solution.VarUInt, solution.InBytesAble, solution.Commands, solution, solution.Util, solution.CmdBody, solution.DevProps, solution.Trigger, solution.TimerCmdBody, solution.EmptyProps, solution.EnvSensorProps, solution.StringsProps, solution.ValueBody)[0m
+[0m[[0m[0mdebug[0m] [0m[0mSources indirectly invalidated by:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	product: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	binary dep: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	external source: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated classes: Set(solution.EnvSensorStatus, solution.Device, solution.Packet, solution.MyString, solution.Timer, solution.Payload, solution.EmptyBody, solution.CoderBase64, solution.VarUInt, solution.InBytesAble, solution.Commands, solution, solution.Util, solution.CmdBody, solution.DevProps, solution.Trigger, solution.TimerCmdBody, solution.EmptyProps, solution.EnvSensorProps, solution.StringsProps, solution.ValueBody)[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated sources:Set(${BASE}/src/main/scala/solution.scala, ${BASE}/src/main/scala/Main.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: solution.EnvSensorStatus, solution.Device, solution.Packet, solution.MyString, solution.Timer, solution.Payload, solution.EmptyBody, solution.CoderBase64, solution.VarUInt, solution.InBytesAble, solution.Commands, solution, solution.Util, solution.CmdBody, solution.DevProps, solution.Trigger, solution.TimerCmdBody, solution.EmptyProps, solution.EnvSensorProps, solution.StringsProps, solution.ValueBody[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding solution.CmdBody by solution.InBytesAble[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding solution.TimerCmdBody by solution.CmdBody[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding solution.ValueBody by solution.CmdBody[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding solution.DevProps by solution.InBytesAble[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding solution.EmptyProps by solution.DevProps[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding solution.EnvSensorProps by solution.DevProps[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding solution.StringsProps by solution.DevProps[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding solution.Trigger by solution.InBytesAble[0m
+[0m[[0m[0mdebug[0m] [0m[0mRecompiling all sources: number of invalidated sources > 50.0 percent of all sources[0m
+[0m[[0m[0mdebug[0m] [0m[0mcompilation cycle 1[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 3 Scala sources to /home/mopstream/IdeaProjects/solution/target/scala-2.11/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mGetting org.scala-sbt:compiler-bridge_2.11:1.9.2:compile for Scala 2.11.12[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 38d3001e for Scala compiler version 2.11.12[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] The Scala compiler is invoked with:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-bootclasspath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	/home/mopstream/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.12/scala-library-2.11.12.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-classpath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	/home/mopstream/IdeaProjects/solution/target/scala-2.11/classes:/home/mopstream/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client3/core_2.11/3.8.16/core_2.11-3.8.16.jar:/home/mopstream/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/model/core_2.11/1.5.5/core_2.11-1.5.5.jar:/home/mopstream/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/shared/core_2.11/1.3.13/core_2.11-1.3.13.jar:/home/mopstream/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/shared/ws_2.11/1.3.13/ws_2.11-1.3.13.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0mScala compilation took 9.714767925 s[0m
+[0m[[0m[0mdebug[0m] [0m[0mdone compiling[0m
